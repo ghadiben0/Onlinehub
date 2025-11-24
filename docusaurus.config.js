@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Welcome to ZUMConnect documentation hub ',
+  tagline: 'hello',
+  favicon: 'img/zumconnect-logo.jpg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'ghadiben', // Usually your GitHub org/user name.
+  projectName: 'donlinehelp', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -83,22 +83,28 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: 'Documentation Hub',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'To ZC',
+          src: 'img/zumconnect-logo.jpg',
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Admin Guide',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'right',
+            label: 'Need Help?',
+          },
+          {to: '/blog', label: 'Customer Guide', position: 'left'},
+          {
+            href: 'https://stage.zumport.com/home',
+            label: 'ZUMConnect',
             position: 'right',
           },
         ],
@@ -107,11 +113,10 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Site References',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Find Support',
               },
             ],
           },
@@ -119,34 +124,35 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'ZUM-IT',
+                href: 'https://www.zum-it.com/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Partners to Innovate',
+                href: 'https://p2-innovate.com/',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Infor',
+                href: 'https://www.infor.com/fr-fr',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Site News',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Website',
+                href: 'https://www.zum-it.com/',
+            
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/showcase/zumconnect-infor-portal/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ghada Project, Inc. Built with Ghadghouda.`,
       },
       prism: {
         theme: prismThemes.github,
