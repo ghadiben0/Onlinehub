@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from './index.module.css'; // Your existing styles
+import styles from './index.module.css';
+import '../css/custom.css'; // ensure this line exists
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -65,7 +66,7 @@ const modalStyles = {
   overlay: {
     position: 'fixed',
     top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: 'rgba(165, 151, 30, 0)',
+    backgroundColor: 'rgba(168, 160, 84, 0)',
     zIndex: 9999,
     display: 'flex',
     justifyContent: 'center',
@@ -104,7 +105,7 @@ function UISelection() {
                   textAlign: 'center',
                   border: '1px solid  #f0e5e1ff',
                   borderRadius: '12px',             // rounded corners
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.15)', // floating effect
+                  boxShadow: '0 8px 20px rgba(224, 81, 81, 0.15)', // floating effect
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                }}
                onMouseEnter={e => {

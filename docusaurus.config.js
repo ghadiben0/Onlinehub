@@ -3,7 +3,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Welcome to ZUMConnect Hub',
+  title: 'Welcome to ZUMConnect',
   tagline: 'Your online documentation hub',
   favicon: 'img/zumconnect-logo.jpg',
 

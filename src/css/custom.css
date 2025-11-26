@@ -1,5 +1,5 @@
 /* ---------- Gradient Stripes ---------- */
-.stripes {
+/* .stripes {
   background: linear-gradient(
     135deg,
     #e0f0ff 25%,
@@ -11,10 +11,10 @@
     #c0e0ff 100%
   );
   background-size: 40px 40px;
-}
+} */
 
 /* ---------- Banner ---------- */
-.banner {
+/* .banner {
   background: linear-gradient(
     135deg,
     #fdfdfd,
@@ -25,9 +25,9 @@
   text-align: center;
   color: var(--banner-text-color, #1f2937);
   margin-bottom: 3rem;
-}
+} */
 
-.banner .cta-button {
+/* .banner .cta-button {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -36,15 +36,14 @@
   background-color: var(--cta-bg-color, #0070f3);
   color: var(--cta-text-color, #fff);
   transition: all 0.2s ease;
-}
+} */
 
-.banner .cta-button:hover {
+/* .banner .cta-button:hover {
   opacity: 0.85;
-}
+} */
 
 /* ---------- Footer ---------- */
-.footer-stripes {
-  /* just reuse the class, not compose */
+/* .footer-stripes {
   background: inherit;
   background-size: 40px 40px;
   padding: 2rem 1rem;
@@ -52,10 +51,10 @@
   text-align: center;
   margin-top: 3rem;
   border-radius: 12px 12px 0 0;
-}
+} */
 
 /* ---------- Cards ---------- */
-.documentation-cards {
+/* .documentation-cards {
   display: flex;
   justify-content: space-around;
   margin-top: 4rem;
@@ -93,16 +92,16 @@
 .doc-card p {
   font-size: 0.9rem;
   color: #333;
-}
+} */
 
-/* ---------- Logo ---------- */
-.logo-img {
+/* ---------- Logo COMMENT ---------- */
+/* .logo-img {
   height: 50px;
   cursor: pointer;
-}
+} */
 
-/* ---------- Modal ---------- */
-.logo-modal {
+/* ---------- Modal COMMENT ---------- */
+/* .logo-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -123,10 +122,10 @@
   height: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 999;
-}
+} */
 
 /* ---------- Navbar Button ---------- */
-.navbar__link[title="Customize Theme"] {
+/* .navbar__link[title="Customize Theme"] {
   background-color: #e74c3c;
   color: white;
   padding: 4px 10px;
@@ -134,8 +133,293 @@
   font-weight: 500;
   text-decoration: none;
   transition: background 0.2s;
+} */
+
+/* .navbar__link[title="Customize Theme"]:hover {
+  background-color: #c0392b;
+} */
+
+/* Container wrapping all page content */
+/* .container {
+  padding: 2rem;
+  background-color: var(--custom-hero-background);
+} */
+
+
+
+/* Banner styles copied to be able to revert to the last developed version: it is now commented */
+/* .heroBanner {
+  position: relative;
+  background-color: var(--custom-hero-background);
+  padding: 2rem;
+} */
+
+/* Optional: reflective stripe overlay */
+/* .heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    rgba(141, 15, 15, 0.12),
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+} */
+
+/* Banner title and subtitle */
+/* .hero__title,
+.hero__subtitle {
+  position: relative;
+  z-index: 2; above reflective stripe */
+  /* color: var(--custom-banner-text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+} */
+
+/* CTA buttons */
+/* .ctaButton {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+  user-select: none;
+  background: var(--custom-cta-bg);
+  color: var(--custom-cta-text) !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
-.navbar__link[title="Customize Theme"]:hover {
-  background-color: #c0392b;
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+  backdrop-filter: blur(1px);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ctaButton:hover,
+.ctaButton:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(109, 39, 39, 0.2);
+} */
+
+/* Form wrapper */
+/* .form {
+  display: inline-block;
+  text-align: left;
+  margin-top: 1rem;
+} */
+
+/* Page header (title) wrapper */
+/* .header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+} */
+
+/* Title itself */
+/* .title {
+  color: var(--custom-primary);
+  text-align: left;
+  margin-bottom: 0.5rem;
+} */
+
+/* Buttons below form */
+/* .buttons {
+  margin-top: 2rem;
+}
+.footer{
+  color: var(--custom-primary);
+  text-align: left;
+  margin-bottom: 0.5rem;
+} */
+/*up to this the code is commented to test the standard theme okay*/
+
+/**
+ * this is to test: Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+/* :root {
+  --ifm-color-primary: #777b81;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #5d4a20;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+} */
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* [data-theme='dark'] {
+  --ifm-color-primary: #e2e6e5;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+} */
+
+/*the new solution */
+/* ----------------- Standard Theme Variables ----------------- */
+:root {
+  /* ----------------- Base colors ----------------- */
+  --color-primary: #16ac3b;        /* general primary */
+  --color-text: #0a553c;           /* general text */
+  --color-background: #ffffff;     /* general page background */
+
+  /* ----------------- Banner ----------------- */
+  --banner-bg: #53b90f;
+  --banner-text: #1d1818;
+  --banner-subtitle: #25948e;
+
+  /* ----------------- CTA Buttons ----------------- */
+  --cta-bg: #b43202;
+  --cta-text: #180606;
+
+  /* ----------------- Footer ----------------- */
+  --footer-bg: #343621;
+  --footer-text: #ffffff;
+
+  /* ----------------- TOC & links ----------------- */
+  --toc-text: #333333;
+  --toc-active: #e92c9a;
+  --link-text: #da5621;
+}
+
+/* ----------------- Banner ----------------- */
+.heroBanner {
+  position: relative;
+  background-color: var(--banner-bg);
+  padding: 4rem 0;
+  text-align: center;
+  color: var(--banner-text);
+  overflow: hidden;
+}
+
+.hero__title {
+  color: var(--banner-text);
+}
+
+.hero__subtitle {
+  color: var(--banner-subtitle);
+}
+
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ----------------- CTA Buttons ----------------- */
+.ctaButton,
+.button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+  user-select: none;
+  background: var(--cta-bg);
+  color: var(--cta-text) !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0) 80%
+  );
+  pointer-events: none;
+  backdrop-filter: blur(1px);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ctaButton:hover,
+.ctaButton:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(109, 39, 39, 0.2);
+}
+
+/* ----------------- Footer ----------------- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ----------------- TOC and links ----------------- */
+.toc-item {
+  color: var(--toc-text);
+}
+
+.toc-item.active {
+  color: var(--toc-active);
+}
+
+a {
+  color: var(--link-text);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
 }
