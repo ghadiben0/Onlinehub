@@ -1,159 +1,118 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
-import { getSavedTheme } from '../theme/themeutils';
+import styles from './custom-theme.module.css';
 import '../css/custom.css';
+import { applyCustomColors, loadColorsFromStorage } from '../theme/rootcustomcolors';
 
 export default function CustomThemePage() {
-  // ----- Get real defaults from CSS -----
-  const getDefaultColors = () => ({
-    primary: getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim(),
-    text: getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim(),
-    background: getComputedStyle(document.documentElement).getPropertyValue('--color-background').trim(),
-    bannerBg: getComputedStyle(document.documentElement).getPropertyValue('--banner-bg').trim(),
-    bannerText: getComputedStyle(document.documentElement).getPropertyValue('--banner-text').trim(),
-    bannerSubtitle: getComputedStyle(document.documentElement).getPropertyValue('--banner-subtitle').trim(),
-    ctaBg: getComputedStyle(document.documentElement).getPropertyValue('--cta-bg').trim(),
-    ctaText: getComputedStyle(document.documentElement).getPropertyValue('--cta-text').trim(),
-    footerBg: getComputedStyle(document.documentElement).getPropertyValue('--footer-bg').trim(),
-    footerText: getComputedStyle(document.documentElement).getPropertyValue('--footer-text').trim(),
-    tocText: getComputedStyle(document.documentElement).getPropertyValue('--toc-text').trim(),
-    tocActive: getComputedStyle(document.documentElement).getPropertyValue('--toc-active').trim(),
-    linkText: getComputedStyle(document.documentElement).getPropertyValue('--link-text').trim(),
-  });
-
-  const defaultColors = getDefaultColors();
-
-  // ----- State -----
+  // Initialize state with saved colors or defaults
   const [colors, setColors] = useState(() => {
-    const saved = localStorage.getItem('customColors');
-    return saved ? JSON.parse(saved) : defaultColors;
+    const saved = loadColorsFromStorage();
+    return saved || {
+      primary: '#5A6772',
+      text: '#333333',
+      siteBackground: '#ffffff',        // Full page background
+      bannerBackground: '#5A6772',      // Hero banner background
+      bannerText: '#ffffff',
+      bannerSubtitle: '#dddddd',
+      ctaBg: '#5A6772',
+      ctaText: '#ffffff',
+      footerBg: '#3B4C5A',
+      footerText: '#ffffff',
+    };
   });
 
-  // ----- Apply colors function -----
-  const applyColors = (c) => {
-    const root = document.documentElement;
-
-    root.style.setProperty('--color-primary', c.primary || defaultColors.primary);
-    root.style.setProperty('--color-text', c.text || defaultColors.text);
-    root.style.setProperty('--color-background', c.background || defaultColors.background);
-
-    root.style.setProperty('--banner-bg', c.bannerBg || defaultColors.bannerBg);
-    root.style.setProperty('--banner-text', c.bannerText || defaultColors.bannerText);
-    root.style.setProperty('--banner-subtitle', c.bannerSubtitle || defaultColors.bannerSubtitle);
-
-    root.style.setProperty('--cta-bg', c.ctaBg || defaultColors.ctaBg);
-    root.style.setProperty('--cta-text', c.ctaText || defaultColors.ctaText);
-
-    root.style.setProperty('--footer-bg', c.footerBg || defaultColors.footerBg);
-    root.style.setProperty('--footer-text', c.footerText || defaultColors.footerText);
-
-    root.style.setProperty('--toc-text', c.tocText || defaultColors.tocText);
-    root.style.setProperty('--toc-active', c.tocActive || defaultColors.tocActive);
-    root.style.setProperty('--link-text', c.linkText || defaultColors.linkText);
-
-    if (localStorage.getItem('customThemeActive') === 'true') {
-      root.classList.add('custom-theme-active');
-    } else {
-      root.classList.remove('custom-theme-active');
-    }
-  };
-
-  // ----- Apply on load -----
+  // Apply colors on mount and whenever state changes
   useEffect(() => {
-    const savedTheme = localStorage.getItem('customThemeActive');
-    if (savedTheme === 'true') document.documentElement.classList.add('custom-theme-active');
-    else document.documentElement.classList.remove('custom-theme-active');
+    applyCustomColors(colors);
 
-    applyColors(colors);
+    // Explicitly set body background to prevent white page issue
+    document.body.style.backgroundColor = colors.Background;
   }, [colors]);
 
-  // ----- Handlers -----
+  // Handle individual color changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setColors((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Save colors to localStorage and apply
   const handleSave = () => {
     localStorage.setItem('customColors', JSON.stringify(colors));
-    localStorage.setItem('customThemeActive', 'true');
-    applyColors(colors);
+    applyCustomColors(colors);
+    document.body.style.backgroundColor = colors.Background;
     alert('✅ Custom Theme has been successfully saved!');
   };
 
+  // Cancel changes and revert to last saved theme
   const handleCancel = () => {
-    const savedTheme = getSavedTheme() || defaultColors;
-    setColors(savedTheme);
-    applyColors(savedTheme);
-    window.history.back();
+    const saved = loadColorsFromStorage() || {
+      primary: '#5A6772',
+      text: '#333333',
+      siteBackground: '#ffffff',
+      bannerBackground: '#5A6772',
+      bannerText: '#ffffff',
+      bannerSubtitle: '#dddddd',
+      ctaBg: '#5A6772',
+      ctaText: '#ffffff',
+      footerBg: '#3B4C5A',
+      footerText: '#ffffff',
+    };
+    setColors(saved);
+    applyCustomColors(saved);
+    document.body.style.backgroundColor = saved.Background;
   };
 
-const handleRevertToDefault = () => {
-  localStorage.removeItem('customColors');
-  localStorage.setItem('customThemeActive', 'false');
-
-  setColors(defaultColors);  // <-- update React state
-  applyColors(defaultColors); // <-- update CSS variables
-
-  alert('Theme has been successfully reverted to default.');
-};
-
+  // Revert completely to default theme
+  const handleRevertToDefault = () => {
+    const defaultColors = {
+      primary: '#5A6772',
+      text: '#333333',
+      siteBackground: '#ffffff',
+      bannerBackground: '#5A6772',
+      bannerText: '#ffffff',
+      bannerSubtitle: '#dddddd',
+      ctaBg: '#5A6772',
+      ctaText: '#ffffff',
+      footerBg: '#3B4C5A',
+      footerText: '#ffffff',
+    };
+    setColors(defaultColors);
+    applyCustomColors(defaultColors);
+    document.body.style.backgroundColor = defaultColors.Background;
+    localStorage.removeItem('customColors');
+  };
 
   return (
     <Layout title="Customize Your Theme">
-      <div style={{ textAlign: 'center', padding: '2rem' }}>
-        <h1 style={{ color: 'var(--color-primary)' }}>Customize Your Theme</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Customize Your Theme</h1>
 
-        <div style={{ display: 'inline-block', textAlign: 'left', marginTop: '1rem' }}>
-          <label>Primary Color:</label>
-          <input type="color" name="primary" value={colors.primary} onChange={handleChange} />
-
-          <br />
-          <label>Text Color:</label>
-          <input type="color" name="text" value={colors.text} onChange={handleChange} />
-
-          <br />
-          <label>Background Color:</label>
-          <input type="color" name="background" value={colors.background} onChange={handleChange} />
-
-          <br />
-          <label>Banner Background:</label>
-          <input type="color" name="bannerBg" value={colors.bannerBg} onChange={handleChange} />
-
-          <br />
-          <label>Banner Title Color:</label>
-          <input type="color" name="bannerText" value={colors.bannerText} onChange={handleChange} />
-
-          <br />
-          <label>Banner Subtitle Color:</label>
-          <input type="color" name="bannerSubtitle" value={colors.bannerSubtitle} onChange={handleChange} />
-
-          <br />
-          <label>CTA Background:</label>
-          <input type="color" name="ctaBg" value={colors.ctaBg} onChange={handleChange} />
-
-          <br />
-          <label>CTA Text:</label>
-          <input type="color" name="ctaText" value={colors.ctaText} onChange={handleChange} />
-
-          <br />
-          <label>Footer Background:</label>
-          <input type="color" name="footerBg" value={colors.footerBg} onChange={handleChange} />
-
-          <br />
-          <label>Footer Text:</label>
-          <input type="color" name="footerText" value={colors.footerText} onChange={handleChange} />
-
-          <br />
-          <label>TOC Text:</label>
-          <input type="color" name="tocText" value={colors.tocText} onChange={handleChange} />
-
-          <br />
-          <label>Active TOC Item:</label>
-          <input type="color" name="tocActive" value={colors.tocActive} onChange={handleChange} />
-
-          <br />
-          <label>Content Links:</label>
-          <input type="color" name="linkText" value={colors.linkText} onChange={handleChange} />
+        <div className={styles.form}>
+          {[
+            { label: 'Primary Color', name: 'primary' },
+            { label: 'Text Color', name: 'text' },
+            { label: 'Site Background', name: 'Background' },
+            { label: 'Banner Background', name: 'bannerBackground' },
+            { label: 'Banner Title Color', name: 'bannerText' },
+            { label: 'Banner Subtitle Color', name: 'bannerSubtitle' },
+            { label: 'CTA Background', name: 'ctaBg' },
+            { label: 'CTA Text', name: 'ctaText' },
+            { label: 'Footer Background', name: 'footerBg' },
+            { label: 'Footer Text', name: 'footerText' },
+          ].map(({ label, name }) => (
+            <div key={name} className={styles.fieldRow}>
+              <label htmlFor={name} className={styles.label}>{label}</label>
+              <input
+                id={name}
+                type="color"
+                name={name}
+                value={colors[name]}
+                onChange={handleChange}
+                className={styles.colorPicker}
+              />
+            </div>
+          ))}
         </div>
 
         <div style={{ marginTop: '2rem' }}>

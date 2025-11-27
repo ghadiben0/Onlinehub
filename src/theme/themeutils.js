@@ -1,37 +1,30 @@
-export const getSavedTheme = () => {
-  const saved = localStorage.getItem('customColors');
-  if (!saved) return null;
-  try {
-    return JSON.parse(saved);
-  } catch (e) {
-    console.error('Failed to parse saved theme:', e);
-    return null;
-  }
-};
+// src/theme/themeutils.js
 
-export const applyColors = (colors) => {
+export const applyColors = (colors = {}) => {
   if (!colors) return;
+
   const root = document.documentElement;
 
-  const mapping = {
-    '--color-primary': colors.primary,
-    '--color-text': colors.text,
-    '--color-background': colors.background,
-    '--banner-bg': colors.bannerBg || colors.background,
-    '--banner-text': colors.bannerText,
-    '--banner-subtitle': colors.bannerSubtitle,
-    '--cta-bg': colors.ctaBg,
-    '--cta-text': colors.ctaText,
-    '--footer-bg': colors.footerBg,
-    '--footer-text': colors.footerText,
-    '--toc-text': colors.tocText,
-    '--toc-active': colors.tocActive,
-    '--link-text': colors.linkText,
+  const mappings = {
+    '--color-primary': colors.primary || '',               // Main UI/links/buttons
+    '--color-text': colors.text || '',                     // Body text
+    '--color-background': colors.Background || '',         // Full website background
+    '--color-banner-background': colors.bannerBackground || '',    // Hero banner background
+    '--color-banner-title': colors.bannerText || '',       // Banner title
+    '--color-banner-subtitle': colors.bannerSubtitle || '',// Banner subtitle
+    '--color-cta-bg': colors.ctaBg || '',                 // CTA button background
+    '--color-cta-text': colors.ctaText || '',             // CTA button text
+    '--color-footer-bg': colors.footerBg || '',           // Footer background
+    '--color-footer-text': colors.footerText || '',       // Footer text
+
+    // Legacy Docusaurus mapping
+    '--ifm-color-primary': colors.primary || '',
+    '--ifm-font-color-base': colors.text || '',
   };
 
-  Object.entries(mapping).forEach(([k, v]) => {
-    if (v) root.style.setProperty(k, v);
+  // Apply each mapping
+  Object.entries(mappings).forEach(([key, value]) => {
+    if (value) root.style.setProperty(key, value);
+    else root.style.removeProperty(key);
   });
-
-  root.classList.add('custom-theme-active');
 };

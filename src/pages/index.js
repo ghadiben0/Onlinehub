@@ -5,7 +5,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-import '../css/custom.css'; // ensure this line exists
+import  '../css/custom.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -16,21 +16,20 @@ function HomepageHeader() {
 
   return (
     <>
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <button
-              className="button button--primary button--lg"
-              onClick={openModal}
-            >
-              To Consider  📄
-            </button>
-          </div>
-        </div>
-      </header>
-
+    <header class="heroBanner"> 
+  <div className="container">
+    <h1 className="hero__title">{siteConfig.title}</h1>
+    <p className="hero__subtitle">{siteConfig.tagline}</p>
+    <div className={styles.buttons}>
+      <button
+        className="button button--primary button--lg"
+        onClick={openModal}
+      >
+        To Consider 📄
+      </button>
+    </div>
+  </div>
+</header>
       {/* Modal overlay OUTSIDE of banner */}
       {showModal && (
         <div style={modalStyles.overlay}>
@@ -66,7 +65,7 @@ const modalStyles = {
   overlay: {
     position: 'fixed',
     top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: 'rgba(168, 160, 84, 0)',
+    backgroundColor: 'rgba(245, 221, 12, 0)',
     zIndex: 9999,
     display: 'flex',
     justifyContent: 'center',
