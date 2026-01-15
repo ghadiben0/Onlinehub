@@ -1,0 +1,17 @@
+/* Styles only for the custom theme editor page */
+
+.customThemeContainer {
+  padding: 2rem;
+}
+
+.customThemeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.customThemeBox {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+}

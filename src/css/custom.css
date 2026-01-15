@@ -1,0 +1,95 @@
+/* ============================================
+   Custom Theme CSS (Unified with React)
+   ============================================ */
+
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+/* ==========================
+   Root CSS Variables
+   ========================== */
+:root {
+  /* Text Colors */
+  --color-primary: #5A6772;        /* Titles, headings, TOC */
+  --color-text: #333333;           /* Body / content text */
+
+  /* Background Colors */
+  --color-background: #f5f5f5;     /* Page / site background */
+  --color-banner-background: #5A6772;      /* Hero banner background */
+
+  /* Banner Text */
+  --color-banner-title: #ffffff;    /* Banner main title */
+  --color-banner-subtitle: #dddddd; /* Banner subtitle / tagline */
+
+  /* CTA Buttons */
+  --color-cta-bg: #5A6772;         /* CTA button background */
+  --color-cta-text: #ffffff;       /* CTA button text */
+
+  /* Footer */
+  --color-footer-bg: #3B4C5A;      /* Footer background */
+  --color-footer-text: #ffffff;    /* Footer text */
+}
+
+/* ==========================
+   Body Defaults
+   ========================== */
+/* body {
+  background-color: var(--color-site-bg);
+  color: var(--color-text);
+} */
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.heroBanner {
+  background-color: var(--color-banner-background);
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-banner-title);
+}
+
+
+
+.hero__subtitle {
+  color: var(--color-banner-subtitle);
+}
+/* ==========================
+   CTA Buttons
+   ========================== */
+.ctaButton,
+.button.button--primary {
+  background-color: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.ctaButton:hover,
+.button.button--primary:hover {
+  opacity: 0.85;
+}
+
+/* ==========================
+   Footer
+   ========================== */
+footer.footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer.footer a {
+  color: var(--color-footer-text);
+  text-decoration: none;
+}
+
+footer.footer a:hover {
+  opacity: 0.8;
+}
